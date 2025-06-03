@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">Il nostro Menu</h1>
+<div class="row">
+    {% for pizza in menu %}
+    <div class="col-md-3">
+        <div class="card mb-4 shadow-sm">
+            {% if pizza.immagine %}
+                <img src="{{ pizza.immagine.url }}" alt="{{ pizza.nome }}" class="card-img-top menu-img">
+            {% else %}
+                <img src="" alt="card-img-top menu-img" alt="Immagine non disponibile">
+            {% endif %}
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ pizza.nome }}</h5>
+                <p class="card-title">{{ pizza.prezzo}} €</p>
+                <a href="#" class="btn btn-success">Ordina</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
